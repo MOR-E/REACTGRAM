@@ -5,7 +5,7 @@ const photoSchema = new Schema({
     image: String,
     title: String,
     likes: Array,
-    coments: Array,
+    comments: Array,
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -16,6 +16,6 @@ const photoSchema = new Schema({
     timestamps: true
 }) 
 
-const Photo = mongoose.model("Photo", photoSchema)
+Photo = mongoose.model("Photo", photoSchema);
 
-module.export = Photo
+module.exports = Photo;
