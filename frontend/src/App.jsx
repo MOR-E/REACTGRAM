@@ -16,6 +16,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import EditProfile from './pages/EditProfile/EditProfile'
+import Profile from './pages/Profile/Profile'
 
 
 function App() {
@@ -32,8 +33,9 @@ function App() {
       <Navbar/>
         <div className='Container'>
         <Routes>
-        <Route path='/profile' element={auth ? <EditProfile/> : <Navigate to="/login"/>}/>
+          <Route path='/profile' element={auth ? <EditProfile/> : <Navigate to="/login"/>}/>
           <Route path='/' element={auth ? <Home/> : <Navigate to="/login"/>}/>
+          <Route path='/users/:id' element={auth ? <Profile/> : <Navigate to="/login"/>}/>
           <Route path='/login' element={!auth ? <Login/> : <Navigate to="/"/>}/>
           <Route path='/register' element={!auth ? <Register/> : <Navigate to="/"/>}/>
         </Routes>
