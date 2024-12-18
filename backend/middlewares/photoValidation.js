@@ -24,14 +24,22 @@ const photoInsertValidation = () => {
 
 const photoUpdateValidation = () => {
     return [
-        body('title')
+      body("image")
+        .optional()
+        .custom((value, { req }) => {
+          if (!req.file) {
+            throw new Error("A imagem é obrigatória");
+          }
+          return true;
+        }),
+      body("title")
         .optional()
         .isString()
-        .withMessage('O titulo é obrigatorio')
-        .isLength({min:3})
-        .withMessage('O titulo precisa ter no minomo 3 caracteres.'),
-    ]
-}
+        .withMessage("O título é obrigatório")
+        .isLength({ min: 3 })
+        .withMessage("O nome precisa ter no mínimo 3 caracteres."),
+    ];
+  };
 
 const commentValidation = () => {
     return [

@@ -29,4 +29,6 @@ router.put('/:id', authGuard, photoUpdateValidation(), validate, updatePhoto)
 router.put('/like/:id', authGuard, likephoto)
 router.put('/comment/:id', authGuard, commentValidation(), validate, commentPhoto)
 
+
+
 module.exports = router

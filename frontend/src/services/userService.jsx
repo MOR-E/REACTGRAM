@@ -1,19 +1,19 @@
 import {api, requestConfig} from '../utils/config'
 
-// get user details
-const profile = async(data, token) => {
-    const config = requestConfig('GET', data, token)
-
+// Get user details
+const profile = async (data, token) => {
+    const config = requestConfig("GET", data, token);
+  
     try {
-        const res = await fetch(api + '/users/profile', config)
-            .then((res) => res.json())
-            .catch((err) => err)
-
-        return res
+      const res = await fetch(api + "/users/profile", config)
+        .then((res) => res.json())
+        .catch((err) => err);
+  
+      return res;
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-}
+  };
 
 // Update user details
 const updateProfile = async(data, token) => {

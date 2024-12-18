@@ -37,12 +37,13 @@ const register = async(req, res) => {
         password: passwordHash,
     })
     
-    //if user was created successfully, return the token
-    if(!newUser) {
-        res.status(422).json({errors: ['Houve um erro por favor tente mais tarde']})
-        return
-    } 
-
+  // If user was created sucessfully, return the token
+  if (!newUser) {
+    res.status(422).json({
+      errors: ["Houve um erro, por favor tente novamente mais tarde."],
+    });
+    return;
+  }
     res.status(201).json({
         _id: newUser._id,
         token: generateToken(newUser._id)

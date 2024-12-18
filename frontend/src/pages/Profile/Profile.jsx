@@ -21,18 +21,18 @@ const Profile = () => {
 
     const dispatch = useDispatch()
 
-    const {user, loading} = useSelector((state) => state.user)
-    const {user: userAuth} = useSelector((state) => state.auth)
+    const {user, loading} = useSelector((state) => state.user);
+    const {user: userAuth} = useSelector((state) => state.auth);
     const {
         photos, 
         loading: loadingPhoto, 
         error: errorPhoto,
         message: messagePhoto, 
+    } = useSelector((state) => state.photo);
+    
 
-    } = useSelector((state) => state.photo)
-
-    const [title, setTitle] = useState('')
-    const [image, setImage] = useState('')
+    const [title, setTitle] = useState()
+    const [image, setImage] = useState()
 
     // New form and edit form refs
     const newPhotoForm  = useRef()
@@ -40,9 +40,8 @@ const Profile = () => {
 
     // load user data
     useEffect(() => {
+      dispatch(getUserDetails(id))
         dispatch(getUserPhotos(id))
-        dispatch(getUserDetails(id))
-
     },[dispatch, id]);
 
     const handleFile = (e) => {

@@ -43,14 +43,15 @@ export const  updateProfile = createAsyncThunk(
 // Get user details
 export const getUserDetails = createAsyncThunk(
     "user/get",
-    async(id, thunkAPI) => {
-
-        const data = await userService.getUserDetails(id)
-
-        return data
-
+    async (id, thunkAPI) => {
+      const token = thunkAPI.getState().auth.user.token;
+  
+      const data = await userService.getUserDetails(id, token);
+  
+  
+      return data;
     }
-)
+  );
 
 export const userSlice = createSlice({
     name: 'user',
@@ -64,7 +65,7 @@ export const userSlice = createSlice({
                 builder
                 .addCase(profile.pending,(state) => {
                     state.loading = true;
-                    state.error = false;
+                    state.error = null;
                 }).addCase(profile.fulfilled,(state, action) => {
                     state.loading = false;
                     state.success = true;
@@ -74,7 +75,7 @@ export const userSlice = createSlice({
 
                 .addCase(updateProfile.pending,(state) => {
                     state.loading = true;
-                    state.error = false;
+                    state.error = null;
                 }).addCase(updateProfile.fulfilled,(state, action) => {
                     state.loading = false;
                     state.success = true;
@@ -90,7 +91,7 @@ export const userSlice = createSlice({
 
                 .addCase(getUserDetails.pending,(state) => {
                     state.loading = true;
-                    state.error = false;
+                    state.error = null;
                 }).addCase(getUserDetails.fulfilled,(state, action) => {
                     state.loading = false;
                     state.success = true;
