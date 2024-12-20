@@ -101,6 +101,12 @@ const updatePhoto = async(req, res) => {
   const {id} = req.params
   const {title} = req.body
 
+  let image;
+
+  if (req.file) {
+    image = req.file.filename;
+  }
+
   const reqUser = req.user
 
   const photo = await Photo.findById(id)
@@ -144,14 +150,14 @@ const likephoto = async (req, res) => {
 
   // Check if user already liked the photo
   if(photo.likes.includes(reqUser._id)) {
-    res.status(422).json({errors: ['Você ja curtiu a fto']})
+    res.status(422).json({errors: ['Você ja curtiu a foto']})
     return
   }
 
   //Put user id in likes array
   photo.likes.push(reqUser._id)
 
-  photo.save()
+  await photo.save()
 
   res.status(200).json({photoId: id, userId: reqUser._id, message: 'A foto foi curtida'})
 } 

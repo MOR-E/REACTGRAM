@@ -19,4 +19,5 @@ const PhotoItem = ({photo}) => {
   )
 }
 
+
 export default PhotoItem

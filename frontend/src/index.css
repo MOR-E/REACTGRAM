@@ -33,9 +33,9 @@ label {
 
 label span {
   font-weight: bold;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   color: #aaa;
-  font-size: .7em;
+  font-size: 0.7em;
 }
 
 input {
@@ -52,7 +52,9 @@ input::placeholder {
   color: #aaa;
 }
 
-.btn, button, input[type='submit'] {
+.btn,
+button,
+input[type="submit"] {
   background-color: #0094f6;
   color: #fff;
   border: none;
@@ -60,11 +62,11 @@ input::placeholder {
   padding: 10px 8px;
   font-weight: bold;
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
   font-size: 1em;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   margin-top: 1em;
 }
 
@@ -73,7 +75,8 @@ input:disabled {
   background-color: #000;
 }
 
-button:hover, input[type='submit']:hover {
+button:hover,
+input[type="submit"]:hover {
   opacity: 1;
 }
 
